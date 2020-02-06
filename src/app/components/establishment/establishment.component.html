@@ -1,0 +1,9 @@
+<div style="cursor: pointer;" [routerLink]="['establishment', establishment.id]" class="wrapper">
+    <div>
+        <img class="establishment-img" [src]="establishment.picture">
+    </div>
+    <div>
+        <h1 class="establishment-title">{{establishment.name}}</h1>
+        <p>{{establishment.address}}</p>
+    </div>
+</div>

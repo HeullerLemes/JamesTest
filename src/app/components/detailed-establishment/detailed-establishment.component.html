@@ -1,0 +1,53 @@
+<div *ngIf="loaded" class="main">
+  <div class="wrapper">
+    <div (click)="navigateBack()" class="back-arrow">
+      <fa-icon [icon]="faLongArrowAltLeft"></fa-icon>
+    </div>
+    <div>
+      <img class="establishment-img" [src]="establishment.picture">
+    </div>
+    <div>
+      <h1 class="establishment-title">{{establishment.name}}</h1>
+      <p class="establishment-id">ID: {{establishment.id}}</p>
+    </div>
+  </div>
+  <form [formGroup]="establishmentForm" class="main-edit">
+    Informações Básicas
+    <div class="input-container">
+      <div class="grow-div">
+        <p>Nome</p>
+        <input formControlName="name" >
+        <p class="invalid-input-warning" *ngIf="!establishmentForm.controls.name.valid">Campo obrigatório</p>
+      </div>
+      <div class="grow-div">
+        <p>Email</p>
+        <input [ngStyle]="{'border-color': establishmentForm.controls.email.valid ? '' : 'red'}" formControlName="email" >
+        <p class="invalid-input-warning" *ngIf="!establishmentForm.controls.email.valid">Preencher um email válido</p>
+      </div>
+      <div class="grow-div">
+        <p>Telefone</p>
+        <input formControlName="phone" >
+        <p class="invalid-input-warning" *ngIf="!establishmentForm.controls.phone.valid">Campo obrigatório</p>
+      </div>
+    </div>
+    <div class="input-container">
+      <div class="grow-div">
+        <p>Endereço</p>
+        <input formControlName="address" >
+        <p class="invalid-input-warning" *ngIf="!establishmentForm.controls.address.valid">Campo obrigatório</p>
+      </div>
+      <div class="grow-div">
+        <p>Latitude</p>
+        <input formControlName="latitude" >
+        <p class="invalid-input-warning" *ngIf="!establishmentForm.controls.latitude.valid">Latitude deve estar entre -90 e 90</p>
+      </div>
+      <div class="grow-div">
+        <p>Longitude</p>
+        <input [ngStyle]="{'border-color': establishmentForm.controls.longitude.valid ? '' : 'red'}" formControlName="longitude" >
+        <p class="invalid-input-warning" *ngIf="!establishmentForm.controls.longitude.valid">Longitude deve estar entre -180 e 180</p>
+      </div>
+    </div>
+  </form>
+</div>
+<div style="height: 50px;"></div>
+<button (click)="updateEstablishment()" class="update-button">Atualizar</button>
